@@ -1,7 +1,10 @@
 import React from 'react';
 import { css } from 'emotion';
 
+import CategorySelect from '../components/categorySelect';
+
 const Projects = ({ apps, webPages }) => {
+  console.log(apps);
   return (
     <div
       className={css`
@@ -19,21 +22,12 @@ const Projects = ({ apps, webPages }) => {
       >
         Projects
       </h2>
+      <CategorySelect />
       <div
         className={css`
           display: flex;
         `}
       >
-        <h2
-          className={css`
-            transform: rotate(-90deg);
-            transform-origin: left top 0;
-            margin-top: 12%;
-            font-size: 2em;
-          `}
-        >
-          Apps
-        </h2>
         {apps.map(app => {
           return (
             <div

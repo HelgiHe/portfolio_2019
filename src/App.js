@@ -24,9 +24,8 @@ const App = () => {
   const [loading, setLoading] = useState(true);
   if (loading) {
     client.getEntries().then(entries => {
-      console.log(entries);
       const mobileApps = entries.items.filter(
-        entry => entry.sys.contentType.sys.id === 'project',
+        entry => entry.fields.type === 'app',
       );
       const webs = entries.items.filter(
         entry => entry.sys.contentType.sys.id === 'webPage',
@@ -36,7 +35,9 @@ const App = () => {
       setLoading(false);
     });
   }
-
+  if (loading) {
+    return <div>....Loading</div>;
+  }
   return (
     <div
       className={css`
