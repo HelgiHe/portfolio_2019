@@ -1,0 +1,8 @@
+@font-face {
+  font-family: Oswald;
+  src: url(../assets/Oswald-Regular.ttf);
+}
+
+body {
+  font-family: Oswald, Courier, monospace;
+}

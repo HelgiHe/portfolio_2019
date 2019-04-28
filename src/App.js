@@ -41,11 +41,13 @@ const App = () => {
   return (
     <div
       className={css`
-        height: 100vh;
+        min-height: 100vh;
+        hieght: 100%;
         width: 100vw;
         color: ${colors.fontColor};
         background-color: ${colors.mainColor};
-        font-family: 'Helvetica Neue', 'Open Sans', sans-serif;
+        font-family: Oswald, Helvetica, sans-serif;
+        letter-spacing: 0.1em;
       `}
     >
       <div

@@ -1,14 +1,41 @@
 import React from 'react';
 import { css } from 'emotion';
 
+const base = css`
+  position: relative;
+  width: 80px;
+  background-color: #000;
+  display: block;
+  overflow: hidden;
+  height: 25px;
+  color: #fff;
+  &:before {
+    transition: 2.5s ease-in-out;
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    transform: translateX(-100%);
+  }
+  &:hover {
+    color: color: #000;
+
+    &:before {
+      transform: translateX(0);
+    }
+  }
+`;
+
 const Button = ({ onClick, isSelected, text }) => {
   return (
     <button
       className={
         !isSelected
           ? css`
-              width: 80px;
-              height: 25px;
+              ${base};
               display: flex;
               justify-content: center;
               font-size: 12px;
@@ -17,8 +44,7 @@ const Button = ({ onClick, isSelected, text }) => {
               border-radius: 5px;
             `
           : css`
-              width: 80px;
-              height: 28px;
+              ${base};
               display: flex;
               color: #000;
               justify-content: center;
