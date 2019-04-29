@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { css } from 'emotion';
 
+import Apps from '../components/projects/apps';
 import CategorySelect from '../components/categorySelect';
 
 const Projects = ({ apps, webPages }) => {
-  console.log(apps);
+  const [selectedCategory, setCategory] = useState('webPages');
   return (
     <div
       className={css`
@@ -22,28 +23,16 @@ const Projects = ({ apps, webPages }) => {
       >
         Projects
       </h2>
-      <CategorySelect />
+      <CategorySelect
+        selectCategory={setCategory}
+        selectedCategory={selectedCategory}
+      />
       <div
         className={css`
           display: flex;
         `}
       >
-        {apps.map(app => {
-          return (
-            <div
-              key={app.sys.id}
-              className={css`
-              background-image: url('https:${
-                app.fields.mainImage.fields.file.url
-              }');
-              background-size: cover; 
-              background-position: center center; 
-              height: 20em;
-              width: 15em;
-            `}
-            />
-          );
-        })}
+        <Apps apps={apps} />
       </div>
       <div
         className={css`

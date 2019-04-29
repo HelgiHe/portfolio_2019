@@ -2,7 +2,7 @@ import React from 'react';
 import { css } from 'emotion';
 import Button from './button';
 
-const CategorySelect = () => {
+const CategorySelect = ({ selectCategory }) => {
   return (
     <div
       className={css`
@@ -13,9 +13,9 @@ const CategorySelect = () => {
         margin-bottom: 4em;
       `}
     >
-      <Button text="Web" onClick={() => {}} />
-      <Button text="Apps" onClick={() => {}} />
-      <Button text="Misc" onClick={() => {}} />
+      <Button text="Web" onClick={() => selectCategory('webPages')} />
+      <Button text="Apps" onClick={() => selectCategory('apps')} />
+      <Button text="Misc" onClick={() => selectCategory('misc')} />
     </div>
   );
 };

@@ -4,19 +4,24 @@ import { css } from 'emotion';
 const base = css`
   position: relative;
   width: 80px;
-  background-color: #000;
   display: block;
   overflow: hidden;
   height: 25px;
   color: #fff;
+  transition: 0.18s ease-in-out;
+  z-index: 1;
+  &:hover {
+     color: #000;
+  }
   &:before {
-    transition: 2.5s ease-in-out;
+    transition: 0.18s ease-in;
     content: '';
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
+    z-index: -100;
     background-color: #fff;
     transform: translateX(-100%);
   }
