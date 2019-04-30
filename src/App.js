@@ -54,6 +54,7 @@ const App = () => {
         className={css`
           display: flex;
           flex-direction: row;
+          position: fixed;
         `}
       >
         <Logo />

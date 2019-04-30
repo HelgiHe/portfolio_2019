@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { css } from 'emotion';
 
 import Apps from '../components/projects/apps';
+import Webpages from '../components/projects/webPages';
+import Misc from '../components/projects/misc';
 import CategorySelect from '../components/categorySelect';
 
 const Projects = ({ apps, webPages }) => {
@@ -18,7 +20,7 @@ const Projects = ({ apps, webPages }) => {
       <h2
         className={css`
           font-size: 1.2em;
-          margin: 2em auto;
+          margin: 6em auto 3em auto;
         `}
       >
         Projects
@@ -27,35 +29,9 @@ const Projects = ({ apps, webPages }) => {
         selectCategory={setCategory}
         selectedCategory={selectedCategory}
       />
-      <div
-        className={css`
-          display: flex;
-        `}
-      >
-        <Apps apps={apps} />
-      </div>
-      <div
-        className={css`
-          display: flex;
-        `}
-      >
-        {webPages.map(web => {
-          return (
-            <div
-              key={web.sys.id}
-              className={css`
-              background-image: url('https:${
-                web.fields.mainImage.fields.file.url
-              }');
-              background-size: cover; 
-              background-position: center center; 
-              height: 15em;
-              width: 20em;
-            `}
-            />
-          );
-        })}
-      </div>
+      {selectedCategory === 'apps' && <Apps apps={apps} />}
+      {selectedCategory === 'webPages' && <Webpages webPages={webPages} />}
+      {selectedCategory === 'misc' && <Misc />}
     </div>
   );
 };
