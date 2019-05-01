@@ -7,7 +7,6 @@ const WebPages = ({ webPages }) => {
   const [showApp, setVisibility] = useState(false);
   const [showSpinner, setSpinner] = useState(true);
   if (showSpinner) {
-    // show spinner
     window.setTimeout(() => {
       setSpinner(false);
     }, 850);

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { css } from 'emotion';
 
-import Loader from '../loader';
-
 const Misc = ({ other }) => {
   const [showApp, setVisibility] = useState(false);
 
@@ -16,11 +14,26 @@ const Misc = ({ other }) => {
     <div
       className={css`
         display: flex;
-        transition: opacity 680ms cubic-bezier(0.23, 1, 0.32, 1);
+        transition: opacity 680ms cubic-bezier(0.42, 0.095, 0.24, 0.91);
         opacity: ${showApp ? 1 : 0};
       `}
     >
-      <Loader />
+      {other.map(item => {
+        return (
+          <div
+            key={item.sys.id}
+            className={css`
+        background-image: url('https:${item.fields.mainImage.fields.file.url}');
+        background-size: cover; 
+        background-position: center center; 
+        border-radius: 2px;
+        height: 15em;
+        width: 23em;
+        margin: 0 4em 0 0; 
+      `}
+          />
+        );
+      })}
     </div>
   );
 };

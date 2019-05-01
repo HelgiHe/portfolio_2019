@@ -44,7 +44,7 @@ const spinner3 = keyframes`
   }
 `;
 
-const Loader = () => {
+const Loader = ({ className = '' }) => {
   return (
     <div
       className={css`
@@ -54,6 +54,7 @@ const Loader = () => {
         position: relative;
         width: 64px;
         height: 64px;
+        ${className}
       `}
     >
       <div

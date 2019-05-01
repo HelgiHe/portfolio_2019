@@ -6,7 +6,7 @@ import Webpages from '../components/projects/webPages';
 import Misc from '../components/projects/misc';
 import CategorySelect from '../components/categorySelect';
 
-const Projects = ({ apps, webPages }) => {
+const Projects = ({ apps, webPages, other }) => {
   const [selectedCategory, setCategory] = useState('webPages');
   return (
     <div
@@ -31,7 +31,7 @@ const Projects = ({ apps, webPages }) => {
       />
       {selectedCategory === 'apps' && <Apps apps={apps} />}
       {selectedCategory === 'webPages' && <Webpages webPages={webPages} />}
-      {selectedCategory === 'misc' && <Misc />}
+      {selectedCategory === 'misc' && <Misc other={other} />}
     </div>
   );
 };

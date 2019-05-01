@@ -21,6 +21,7 @@ const client = contentful.createClient({
 const App = () => {
   const [apps, setApps] = useState([]);
   const [webPages, setwebPages] = useState([]);
+  const [miscs, setMisc] = useState([]);
   const [loading, setLoading] = useState(true);
   if (loading) {
     client.getEntries().then(entries => {
@@ -30,8 +31,10 @@ const App = () => {
       const webs = entries.items.filter(
         entry => entry.sys.contentType.sys.id === 'webPage',
       );
+      const misc = entries.items.filter(entry => entry.fields.type === 'misc');
       setwebPages(webs);
       setApps(mobileApps);
+      setMisc(misc);
       setLoading(false);
     });
   }
@@ -62,7 +65,12 @@ const App = () => {
       </div>
       <Router>
         <Home path="/" />
-        <Projects path="projects" apps={apps} webPages={webPages} />
+        <Projects
+          path="projects"
+          apps={apps}
+          webPages={webPages}
+          other={miscs}
+        />
         <About path="about" />
       </Router>
     </div>
