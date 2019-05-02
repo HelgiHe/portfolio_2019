@@ -58,6 +58,7 @@ const App = () => {
           display: flex;
           flex-direction: row;
           position: fixed;
+          z-index: 5;
         `}
       >
         <Logo />

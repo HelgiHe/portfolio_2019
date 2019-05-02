@@ -42,6 +42,7 @@ class navBar extends React.Component {
           display: flex;
           justify-content: space-around;
           align-items: center;
+          z-index: 4;
           opacity: 1;
         `}
       >

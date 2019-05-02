@@ -23,6 +23,7 @@
     "react-emotion": "^10.0.0",
     "react-icons": "^3.5.0",
     "react-markdown": "^4.0.8",
+    "react-particles-js": "^2.6.0",
     "three": "^0.103.0",
     "three-orbit-controls": "^82.1.0"
   },

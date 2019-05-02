@@ -34,7 +34,7 @@ const base = css`
   }
 `;
 
-const Button = ({ onClick, isSelected, text }) => {
+const Button = ({ onClick, isSelected, text, className }) => {
   return (
     <button
       className={
@@ -47,6 +47,7 @@ const Button = ({ onClick, isSelected, text }) => {
               background-color: rgba(0, 0, 0, 0);
               color: #fff;
               border-radius: 5px;
+              ${className}
             `
           : css`
               ${base};

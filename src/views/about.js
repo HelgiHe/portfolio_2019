@@ -59,16 +59,30 @@ const About = () => {
       className={css`
         display: flex;
         justify-content: center;
+        flex-direction: column;
+        width: 70%;
+        margin: auto;
+        line-height: 22px;
       `}
     >
       <h3
         className={css`
           margin-top: 8em;
+          margin-bottom: 2em;
+          font-size: 1.3em;
         `}
       >
         About Me
       </h3>
       <ReactMarkdown source={about} escapeHtml={false} />
+      <a
+        href="mailto: helgihel@gmail.com"
+        className={css`
+          margin-top: 1em;
+        `}
+      >
+        Contact
+      </a>
     </div>
   );
 };
