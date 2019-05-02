@@ -41,7 +41,7 @@ const Home = () => {
         className={css`
           position: absolute;
           left: 40%;
-          top: 35%;
+          top: 30%;
           width: 20em;
           height: 10em;
           display: flex;

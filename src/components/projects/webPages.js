@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { css } from 'emotion';
 
 import Loader from '../loader';
@@ -14,27 +14,24 @@ const WebPages = ({ webPages }) => {
   if (!showSpinner) {
     window.setTimeout(() => {
       setVisibility(true);
-    }, 100);
+    }, 50);
   }
-  if (showSpinner) {
-    return <Loader />;
-  }
-
   return (
-    <div
-      className={css`
-        display: flex;
-        flex-wrap: wrap;
-        transition: opacity 750ms cubic-bezier(0.42, 0.095, 0.24, 0.91);
-        opacity: ${showApp ? 1 : 0};
-        justify-content: center;
-      `}
-    >
-      {webPages.map(web => {
-        return (
-          <div
-            key={web.sys.id}
-            className={css`
+    <Fragment>
+      <div
+        className={css`
+          display: flex;
+          flex-wrap: wrap;
+          transition: opacity 750ms cubic-bezier(0.42, 0.095, 0.24, 0.91);
+          opacity: ${showApp ? 1 : 0};
+          justify-content: center;
+        `}
+      >
+        {webPages.map(web => {
+          return (
+            <div
+              key={web.sys.id}
+              className={css`
           background-image: url('https:${
             web.fields.mainImage.fields.file.url
           }');
@@ -44,10 +41,24 @@ const WebPages = ({ webPages }) => {
           width: 20em;
           margin: 0 4em 0 0; 
         `}
-          />
-        );
-      })}
-    </div>
+            />
+          );
+        })}
+      </div>
+      {showSpinner && (
+        <div
+          className={css`
+            position: absolute;
+            left: 45%;
+            top: 37%;
+            height: 100vh;
+            width: 100vw;
+          `}
+        >
+          <Loader />
+        </div>
+      )}
+    </Fragment>
   );
 };
 
