@@ -1,28 +1,36 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { css } from 'emotion';
+
+import Loader from '../loader';
 
 const Misc = ({ other }) => {
   const [showApp, setVisibility] = useState(false);
-
-  if (!showApp) {
-    // show spinner
+  const [showSpinner, setSpinner] = useState(true);
+  if (showSpinner) {
+    window.setTimeout(() => {
+      setSpinner(false);
+    }, 850);
+  }
+  if (!showSpinner) {
     window.setTimeout(() => {
       setVisibility(true);
-    }, 150);
+    }, 50);
   }
+
   return (
-    <div
-      className={css`
-        display: flex;
-        transition: opacity 680ms cubic-bezier(0.42, 0.095, 0.24, 0.91);
-        opacity: ${showApp ? 1 : 0};
-      `}
-    >
-      {other.map(item => {
-        return (
-          <div
-            key={item.sys.id}
-            className={css`
+    <Fragment>
+      <div
+        className={css`
+          display: flex;
+          transition: opacity 680ms cubic-bezier(0.42, 0.095, 0.24, 0.91);
+          opacity: ${showApp ? 1 : 0};
+        `}
+      >
+        {other.map(item => {
+          return (
+            <div
+              key={item.sys.id}
+              className={css`
         background-image: url('https:${item.fields.mainImage.fields.file.url}');
         background-size: cover; 
         background-position: center center; 
@@ -31,10 +39,24 @@ const Misc = ({ other }) => {
         width: 23em;
         margin: 0 4em 0 0; 
       `}
-          />
-        );
-      })}
-    </div>
+            />
+          );
+        })}
+      </div>
+      {showSpinner && (
+        <div
+          className={css`
+            position: absolute;
+            left: 48%;
+            top: 37%;
+            height: 100vh;
+            width: 100vw;
+          `}
+        >
+          <Loader />
+        </div>
+      )}
+    </Fragment>
   );
 };
 

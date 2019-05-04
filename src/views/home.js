@@ -59,6 +59,15 @@ const Home = () => {
             font-size: 1.1em;
           `}
         />
+        <Button
+          text="About"
+          onClick={() => navigate('/about')}
+          className={css`
+            height: 2em;
+            width: 10em;
+            font-size: 1.1em;
+          `}
+        />
         <a href="https://github.com/HelgiHe'">
           <Button
             text="Github"

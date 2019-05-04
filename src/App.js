@@ -7,6 +7,7 @@ import Projects from './views/projects';
 import Home from './views/home';
 import About from './views/about';
 
+import Loader from './components/loader';
 import Logo from './components/logo';
 import NavBar from './components/navbar';
 
@@ -39,13 +40,27 @@ const App = () => {
     });
   }
   if (loading) {
-    return <div>....Loading</div>;
+    return (
+      <div
+        className={css`
+          height: 100vh;
+          width: 100vw;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: ${colors.fontColor};
+          background-color: ${colors.mainColor};
+        `}
+      >
+        <Loader />
+      </div>
+    );
   }
   return (
     <div
       className={css`
         min-height: 100vh;
-        hieght: 100%;
+        height: 100%;
         width: 100vw;
         color: ${colors.fontColor};
         background-color: ${colors.mainColor};

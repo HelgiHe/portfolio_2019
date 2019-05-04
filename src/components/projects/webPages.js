@@ -49,7 +49,7 @@ const WebPages = ({ webPages }) => {
         <div
           className={css`
             position: absolute;
-            left: 45%;
+            left: 48%;
             top: 37%;
             height: 100vh;
             width: 100vw;
