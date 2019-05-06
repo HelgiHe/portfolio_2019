@@ -13,11 +13,10 @@
 
 # [START app_yaml]
 runtime: nodejs10
-
-handlers:
-  - url: /.*
-    static_files: dist/index.html
-    upload: dist/index.html
-  - url: /.*
-    static_dir: dist
+# handlers:
+#   - url: /.*
+#     static_files: dist/index.html
+#     upload: dist/index.html
+#   - url: /.*
+#     static_dir: dist
 # [END app_yaml]

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Router } from '@reach/router';
+import { createHistory, LocationProvider, Router } from '@reach/router';
 import { css } from 'emotion';
 import * as contentful from 'contentful';
 
