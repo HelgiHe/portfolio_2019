@@ -43,10 +43,12 @@ const Button = ({ onClick, isSelected, text, className }) => {
               ${base};
               display: flex;
               justify-content: center;
+              align-items: center;
               font-size: 12px;
               background-color: rgba(0, 0, 0, 0);
               color: #fff;
               border-radius: 5px;
+              border: solid 1px #fff;
               ${className}
             `
           : css`
