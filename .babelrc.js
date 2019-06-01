@@ -1,8 +1,8 @@
 module.exports = {
   presets: [
-    'react',
     [
-      'env',
+      '@babel/preset-env',
+
       {
         targets: {
           browser: [['last 2 versions']],
@@ -10,5 +10,8 @@ module.exports = {
       },
     ],
   ],
-  plugins: ['transform-class-properties', 'transform-react-jsx'],
+  plugins: [
+    '@babel/plugin-transform-react-jsx',
+    '@babel/plugin-transform-runtime',
+  ],
 };

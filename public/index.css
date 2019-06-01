@@ -3,6 +3,17 @@
   src: url(../assets/Oswald-Regular.ttf);
 }
 
+@font-face {
+  font-family: Quicksand;
+  src: url(../assets/Quicksand-Regular.ttf);
+}
+
+@font-face {
+  font-family: Quicksand;
+  src: url(../assets/Quicksand-Bold.ttf);
+  font-weight: bold;
+}
+
 body {
   font-family: Oswald, Courier, monospace;
 }

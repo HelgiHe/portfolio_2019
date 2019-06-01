@@ -23,22 +23,26 @@ const About = () => {
       setVisibility(true);
     }, 150);
   }
-  console.log(about);
-  useEffect(() => {
-    if (loading) {
-      client
-        .getEntry(keys.aboutId)
-        .then(function(entry) {
-          // logs the entry metadata
-          // console.log(entry);
-          setAbout(documentToHtmlString(entry.fields.description));
-        })
-        .catch(err => console.log(err));
-    }
-    setLoading(false);
-  });
 
-  if (loading) {
+  const fetchContent = async () => {
+    console.log('fetching about');
+
+    await client
+      .getEntry(keys.aboutId)
+      .then(function(entry) {
+        setAbout(documentToHtmlString(entry.fields.description));
+      })
+      .catch(err => console.log(err));
+
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    console.log('bla');
+    fetchContent();
+  }, [about]);
+
+  if (!about) {
     return (
       <div
         className={css`
@@ -74,15 +78,13 @@ const About = () => {
       >
         About Me
       </h3>
-      <ReactMarkdown source={about} escapeHtml={false} />
-      <a
-        href="mailto: helgihel@gmail.com"
+      <span
         className={css`
-          margin-top: 1em;
+          font-family: Quicksand;
         `}
       >
-        Contact
-      </a>
+        <ReactMarkdown source={about} escapeHtml={false} />
+      </span>
     </div>
   );
 };

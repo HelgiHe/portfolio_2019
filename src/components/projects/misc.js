@@ -22,6 +22,7 @@ const Misc = ({ other }) => {
       <div
         className={css`
           display: flex;
+          flex-wrap: wrap;
           transition: opacity 680ms cubic-bezier(0.42, 0.095, 0.24, 0.91);
           opacity: ${showApp ? 1 : 0};
           justify-content: space-around;
@@ -43,7 +44,8 @@ const Misc = ({ other }) => {
           background-position: center center; 
           height: 15em;
           width: 20em;
-          margin: 0 4em 0 0;
+          margin-top: 2em;
+          flex-shrink: 0;
           transition: 0.18s ease-out;
           z-index: 1;
           &:after {

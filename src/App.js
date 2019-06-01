@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { createHistory, LocationProvider, Router } from '@reach/router';
 import { css } from 'emotion';
 import * as contentful from 'contentful';
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-114305695-1');
 
 import Projects from './views/projects';
 import Home from './views/home';
 import About from './views/about';
+import Detail from './views/detail';
 
 import Loader from './components/loader';
 import Logo from './components/logo';
@@ -81,12 +84,14 @@ const App = () => {
       </div>
       <Router>
         <Home path="/" />
+        <Detail path="detail/:id" />
         <Projects
           path="projects"
           apps={apps}
           webPages={webPages}
           other={miscs}
         />
+
         <About path="about" />
       </Router>
     </div>

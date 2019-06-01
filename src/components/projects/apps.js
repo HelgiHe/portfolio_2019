@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react';
+import { navigate } from '@reach/router';
 import { css } from 'emotion';
 
 import Loader from '../loader';
@@ -30,11 +31,17 @@ const Apps = ({ apps }) => {
         {apps.map(app => {
           return (
             // eslint-disable-next-line jsx-a11y/anchor-has-content
-            <a
+            <div
               key={app.sys.id}
               href={app.fields.link}
-              target="_blank"
-              rel="noopener noreferrer"
+              onClick={() => {
+                navigate(`detail/${app.sys.id}`, {
+                  state: {
+                    content: app,
+                    link: app.fields.link,
+                  },
+                });
+              }}
               className={css`
         background-image: url('https:${app.fields.mainImage.fields.file.url}');
               position: relative;

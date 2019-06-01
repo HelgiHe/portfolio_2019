@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react';
+import { navigate } from '@reach/router';
 import { css } from 'emotion';
 
 import Loader from '../loader';
@@ -24,15 +25,22 @@ const WebPages = ({ webPages }) => {
           flex-wrap: wrap;
           transition: opacity 750ms cubic-bezier(0.42, 0.095, 0.24, 0.91);
           opacity: ${showApp ? 1 : 0};
-          justify-content: center;
+          justify-content: space-around;
         `}
       >
         {webPages.map(web => {
           return (
             // eslint-disable-next-line jsx-a11y/anchor-has-content
-            <a
+            <div
               key={web.sys.id}
-              href={`${web.fields.link}`}
+              onClick={() => {
+                navigate(`detail/${web.sys.id}`, {
+                  state: {
+                    content: web,
+                    link: web.fields.link,
+                  },
+                });
+              }}
               target="_blank"
               rel="noopener noreferrer"
               className={css`
@@ -44,7 +52,6 @@ const WebPages = ({ webPages }) => {
           background-position: center center; 
           height: 15em;
           width: 20em;
-          margin: 0 4em 0 0;
           transition: 0.18s ease-out;
           z-index: 1;
           &:after {

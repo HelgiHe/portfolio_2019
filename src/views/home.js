@@ -21,10 +21,24 @@ const Home = () => {
         params={{
           particles: {
             number: {
-              value: 70,
+              value: 25,
             },
             size: {
               value: 3,
+            },
+            move: {
+              enable: true,
+              speed: 1.4,
+              direction: 'none',
+              random: false,
+              straight: false,
+              out_mode: 'out',
+              bounce: false,
+              attract: {
+                enable: false,
+                rotateX: 600,
+                rotateY: 1200,
+              },
             },
           },
           interactivity: {
@@ -39,9 +53,8 @@ const Home = () => {
       />
       <div
         className={css`
-          position: absolute;
-          left: 40%;
-          top: 30%;
+          margin: auto;
+          padding-top: 35vh;
           width: 20em;
           height: 10em;
           display: flex;
@@ -68,7 +81,7 @@ const Home = () => {
             font-size: 1.1em;
           `}
         />
-        <a href="https://github.com/HelgiHe'">
+        <a href="https://github.com/HelgiHe">
           <Button
             text="Github"
             className={css`
