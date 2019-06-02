@@ -90,10 +90,10 @@ const WebPages = ({ webPages }) => {
         <div
           className={css`
             position: absolute;
-            left: 48%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
             top: 37%;
-            height: 100vh;
-            width: 100vw;
           `}
         >
           <Loader />

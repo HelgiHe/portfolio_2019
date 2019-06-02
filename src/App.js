@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Router } from '@reach/router';
 import { css } from 'emotion';
 import * as contentful from 'contentful';
-import ReactGA from 'react-ga';
-ReactGA.initialize('UA-114305695-1');
 
 import Projects from './views/projects';
 import Home from './views/home';
@@ -44,7 +42,6 @@ const App = () => {
 
   useEffect(() => {
     fetchProjects();
-    ReactGA.initialize('UA-114305695-1');
   }, []);
 
   if (loading) {

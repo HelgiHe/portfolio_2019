@@ -11,7 +11,6 @@ const Projects = ({ apps, webPages, other }) => {
   return (
     <div
       className={css`
-        max-width: 1200px;
         margin: auto;
         display: flex;
         flex-direction: column;

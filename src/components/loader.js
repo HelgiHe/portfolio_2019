@@ -48,7 +48,6 @@ const Loader = ({ className = '' }) => {
   return (
     <div
       className={css`
-        width: 100%;
         margin: 4em auto;
         display: inline-block;
         position: relative;
