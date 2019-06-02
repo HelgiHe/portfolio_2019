@@ -44,6 +44,7 @@ const App = () => {
 
   useEffect(() => {
     fetchProjects();
+    ReactGA.initialize('UA-114305695-1');
   }, []);
 
   if (loading) {
