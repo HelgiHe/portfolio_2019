@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { createHistory, LocationProvider, Router } from '@reach/router';
+import React, { useState, useEffect } from 'react';
+import { Router } from '@reach/router';
 import { css } from 'emotion';
 import * as contentful from 'contentful';
 import ReactGA from 'react-ga';
@@ -23,25 +23,29 @@ const client = contentful.createClient({
 });
 
 const App = () => {
-  const [apps, setApps] = useState([]);
-  const [webPages, setwebPages] = useState([]);
-  const [miscs, setMisc] = useState([]);
+  const [projects, setProjects] = useState({});
   const [loading, setLoading] = useState(true);
-  if (loading) {
-    client.getEntries().then(entries => {
-      const mobileApps = entries.items.filter(
-        entry => entry.fields.type === 'app',
-      );
-      const webs = entries.items.filter(
-        entry => entry.sys.contentType.sys.id === 'webPage',
-      );
-      const misc = entries.items.filter(entry => entry.fields.type === 'misc');
-      setwebPages(webs);
-      setApps(mobileApps);
-      setMisc(misc);
+
+  const fetchProjects = async () => {
+    await client.getEntries().then(entries => {
+      const items = entries.items.reduce((prev, item) => {
+        const { type } = item.fields;
+        if (!prev[type]) {
+          prev[type] = [item];
+        } else {
+          prev[type] = [...prev[type], item];
+        }
+        return prev;
+      }, {});
+      setProjects(items);
       setLoading(false);
     });
-  }
+  };
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
   if (loading) {
     return (
       <div
@@ -87,9 +91,9 @@ const App = () => {
         <Detail path="detail/:id" />
         <Projects
           path="projects"
-          apps={apps}
-          webPages={webPages}
-          other={miscs}
+          apps={projects.app}
+          webPages={projects.webPage}
+          other={projects.misc}
         />
 
         <About path="about" />

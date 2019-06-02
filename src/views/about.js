@@ -14,31 +14,17 @@ const client = contentful.createClient({
 
 const About = () => {
   const [about, setAbout] = useState('');
-  const [showApp, setVisibility] = useState(false);
-  const [loading, setLoading] = useState(true);
-
-  if (!showApp) {
-    // show spinner
-    window.setTimeout(() => {
-      setVisibility(true);
-    }, 150);
-  }
 
   const fetchContent = async () => {
-    console.log('fetching about');
-
     await client
       .getEntry(keys.aboutId)
       .then(function(entry) {
         setAbout(documentToHtmlString(entry.fields.description));
       })
       .catch(err => console.log(err));
-
-    setLoading(false);
   };
 
   useEffect(() => {
-    console.log('bla');
     fetchContent();
   }, [about]);
 
@@ -52,7 +38,7 @@ const About = () => {
       >
         <Loader
           className={css`
-            margin-top: 8em;
+            margin-top: 15em;
           `}
         />
       </div>
