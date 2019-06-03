@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { css } from 'emotion';
+import { navigate } from '@reach/router';
 
 import Loader from '../loader';
 
@@ -29,13 +30,20 @@ const Misc = ({ other }) => {
         `}
       >
         {other.map(item => {
+          console.log(item);
           return (
             // eslint-disable-next-line jsx-a11y/anchor-has-content
-            <a
+            <div
               key={item.sys.id}
               href={item.fields.link}
-              target="_blank"
-              rel="noopener noreferrer"
+              onClick={() => {
+                navigate(`detail/${item.sys.id}`, {
+                  state: {
+                    content: item,
+                    link: item.fields.link,
+                  },
+                });
+              }}
               className={css`
         background-image: url('https:${item.fields.mainImage.fields.file.url}');
         background-size: cover; 
@@ -84,10 +92,10 @@ const Misc = ({ other }) => {
         <div
           className={css`
             position: absolute;
-            left: 48%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
             top: 37%;
-            height: 100vh;
-            width: 100vw;
           `}
         >
           <Loader />

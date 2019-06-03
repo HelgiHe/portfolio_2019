@@ -11,6 +11,7 @@ import Detail from './views/detail';
 import Loader from './components/loader';
 import Logo from './components/logo';
 import NavBar from './components/navbar';
+import NavLink from './components/navLink';
 
 import keys from './keys';
 import { colors } from './theme';
@@ -81,7 +82,9 @@ const App = () => {
           z-index: 5;
         `}
       >
-        <Logo />
+        <NavLink toSite="/">
+          <Logo />
+        </NavLink>
         <NavBar />
       </div>
       <Router>

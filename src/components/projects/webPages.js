@@ -41,8 +41,6 @@ const WebPages = ({ webPages }) => {
                   },
                 });
               }}
-              target="_blank"
-              rel="noopener noreferrer"
               className={css`
           background-image: url('https:${
             web.fields.mainImage.fields.file.url
