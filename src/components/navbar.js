@@ -2,7 +2,7 @@ import React from 'react';
 import { MdHome, MdInfoOutline, MdDevices } from 'react-icons/md';
 import { TweenMax, Back } from 'gsap/TweenMax';
 import { css } from 'emotion';
-
+import styled from '@emotion/styled';
 import NavLink from './navLink';
 import { colors } from '../theme';
 
@@ -33,19 +33,7 @@ class navBar extends React.Component {
 
   render() {
     return (
-      <nav
-        ref={nav => (this.navEl = nav)}
-        className={css`
-          background-color: ${colors.secondaryColor};
-          width: 20em;
-          height: 3em;
-          display: flex;
-          justify-content: space-around;
-          align-items: center;
-          z-index: 4;
-          opacity: 1;
-        `}
-      >
+      <StyledNav ref={(nav) => (this.navEl = nav)}>
         <NavLink toSite="/">
           <MdHome
             color={colors.fontColor}
@@ -70,9 +58,20 @@ class navBar extends React.Component {
             `}
           />
         </NavLink>
-      </nav>
+      </StyledNav>
     );
   }
 }
 
 export default navBar;
+
+const StyledNav = styled.nav`
+  background-color: ${colors.secondaryColor};
+  width: 20em;
+  height: 3em;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 4;
+  opacity: 1;
+`;

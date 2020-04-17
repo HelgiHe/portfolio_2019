@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import * as contentful from 'contentful';
 import { css } from 'emotion';
+import styled from '@emotion/styled';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import ReactMarkdown from 'react-markdown';
 
@@ -18,10 +19,10 @@ const About = () => {
   const fetchContent = async () => {
     await client
       .getEntry(keys.aboutId)
-      .then(function(entry) {
+      .then(function (entry) {
         setAbout(documentToHtmlString(entry.fields.description));
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {
@@ -30,49 +31,47 @@ const About = () => {
 
   if (!about) {
     return (
-      <div
-        className={css`
-          display: flex;
-          justify-content: center;
-        `}
-      >
+      <LoaderWrapper>
         <Loader
           className={css`
             margin-top: 15em;
           `}
         />
-      </div>
+      </LoaderWrapper>
     );
   }
   return (
-    <div
-      className={css`
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        width: 70%;
-        margin: auto;
-        line-height: 22px;
-      `}
-    >
-      <h3
-        className={css`
-          margin-top: 8em;
-          margin-bottom: 2em;
-          font-size: 1.3em;
-        `}
-      >
-        About Me
-      </h3>
-      <span
-        className={css`
-          font-family: Quicksand;
-        `}
-      >
+    <ContentWrapper>
+      <Title>About Me</Title>
+      <ArticleWrapper>
         <ReactMarkdown source={about} escapeHtml={false} />
-      </span>
-    </div>
+      </ArticleWrapper>
+    </ContentWrapper>
   );
 };
 
 export default About;
+
+const ContentWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 70%;
+  margin: auto;
+  line-height: 22px;
+`;
+
+const Title = styled.h3`
+  margin-top: 8em;
+  margin-bottom: 2em;
+  font-size: 1.3em;
+`;
+
+const LoaderWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const ArticleWrapper = styled.article`
+  font-family: Quicksand;
+`;

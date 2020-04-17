@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel public/index.html",
+    "dev": "parcel public/index.html --open",
     "build": "parcel build public/index.html",
     "start": "node server.js",
     "prestart": "parcel build public/index.html",
@@ -17,6 +17,7 @@
     "@contentful/rich-text-html-renderer": "^13.1.0",
     "@contentful/rich-text-react-renderer": "^13.2.0",
     "@emotion/core": "^10.0.10",
+    "@emotion/styled": "^10.0.27",
     "@reach/router": "^1.2.1",
     "contentful": "^7.5.0",
     "emotion": "^10.0.9",

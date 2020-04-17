@@ -1,23 +1,14 @@
 import React from 'react';
 import Button from '../components/button';
 import { css } from 'emotion';
+import styled from '@emotion/styled';
 import Particles from 'react-particles-js';
 import { navigate } from '@reach/router';
 
 const Home = () => {
   return (
-    <div
-      className={css`
-        height: 100vh;
-        width: 100%;
-      `}
-    >
-      <Particles
-        className={css`
-          height: 100vh;
-          width: 100%;
-          position: absolute;
-        `}
+    <Container>
+      <ParticleWrapper
         params={{
           particles: {
             number: {
@@ -51,59 +42,47 @@ const Home = () => {
           },
         }}
       />
-      <div
-        className={css`
-          margin: auto;
-          padding-top: 35vh;
-          width: 20em;
-          height: 10em;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: space-around;
-        `}
-      >
-        <Button
-          text="Projects"
-          onClick={() => navigate('/projects')}
-          className={css`
-            height: 2em;
-            width: 10em;
-            font-size: 1.1em;
-          `}
-        />
-        <Button
-          text="About"
-          onClick={() => navigate('/about')}
-          className={css`
-            height: 2em;
-            width: 10em;
-            font-size: 1.1em;
-          `}
-        />
+      <ButtonWrapper>
+        <StyledButton text="Projects" onClick={() => navigate('/projects')} />
+        <StyledButton text="About" onClick={() => navigate('/about')} />
         <a href="https://github.com/HelgiHe">
-          <Button
-            text="Github"
-            className={css`
-              height: 2em;
-              width: 10em;
-              font-size: 1.1em;
-            `}
-          />
+          <StyledButton text="Github" />
         </a>
         <a href="mailto: helgihel@gmail.com">
-          <Button
-            text="Contact"
-            className={css`
-              height: 2em;
-              width: 10em;
-              font-size: 1.1em;
-            `}
-          />
+          <StyledButton text="Contact" />
         </a>
-      </div>
-    </div>
+      </ButtonWrapper>
+    </Container>
   );
 };
 
 export default Home;
+
+const Container = styled.div`
+  height: 100vh;
+  width: 100%;
+`;
+
+const ParticleWrapper = styled(Particles)`
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+`;
+
+const ButtonWrapper = styled.div`
+  margin: auto;
+  padding-top: 35vh;
+  width: 20em;
+  height: 10em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+`;
+
+const StyledButton = styled(Button)`
+  height: 2em;
+  width: 10em;
+  font-size: 1.1em;
+  margin-bottom: 5px;
+`;

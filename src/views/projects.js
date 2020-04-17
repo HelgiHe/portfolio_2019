@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { css } from 'emotion';
-
+import styled from '@emotion/styled';
 import Apps from '../components/projects/apps';
 import Webpages from '../components/projects/webPages';
 import Misc from '../components/projects/misc';
@@ -9,21 +8,8 @@ import CategorySelect from '../components/categorySelect';
 const Projects = ({ apps, webPages, other }) => {
   const [selectedCategory, setCategory] = useState('webPages');
   return (
-    <div
-      className={css`
-        margin: auto;
-        display: flex;
-        flex-direction: column;
-      `}
-    >
-      <h2
-        className={css`
-          font-size: 1.2em;
-          margin: 6em auto 3em auto;
-        `}
-      >
-        Projects
-      </h2>
+    <Wrapper>
+      <StyledHeader>Projects</StyledHeader>
       <CategorySelect
         selectCategory={setCategory}
         selectedCategory={selectedCategory}
@@ -31,8 +17,19 @@ const Projects = ({ apps, webPages, other }) => {
       {selectedCategory === 'apps' && <Apps apps={apps} />}
       {selectedCategory === 'webPages' && <Webpages webPages={webPages} />}
       {selectedCategory === 'misc' && <Misc other={other} />}
-    </div>
+    </Wrapper>
   );
 };
 
 export default Projects;
+
+const Wrapper = styled.div`
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledHeader = styled.h2`
+  font-size: 1.2em;
+  margin: 6em auto 3em auto;
+`;
